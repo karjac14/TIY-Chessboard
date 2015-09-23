@@ -1,0 +1,82 @@
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#main {
+  margin: auto;
+  width: 566px;
+  height: 800px;
+}
+
+.board {
+  display: block;
+  margin: 0;
+}
+
+.game-name {
+  width: 576px;
+  height: 100px;
+  text-align: center;
+}
+
+
+
+.game-name h1 {
+  font-family: Verdana;
+
+}
+
+.board .side-label, .board .block{
+  float: left;
+  display: inline-block;
+  margin: 0;
+  width: 60px;
+  height: 60px;
+  border: 2px solid gray;
+}
+
+
+
+#empty, #x1,#x2,#x3,#x4,#x5,#x6,#x7,#x8 {
+  text-align: right;
+  border: none;
+  color: #555555;
+  size: 0.5em;
+}
+
+#xA,#xB,#xC,#xD,#xE,#xF,#xG,#xH {
+  border: none;
+  text-align: center;
+  vertical-align: baseline;
+  color: #555555;
+  size: 0.5em;
+}
+.block-light {
+  background-color: #FCD630;
+}
+
+.block-dark {
+  background-color: #555555;
+}
+
+.block p {
+  display: none;
+}
+
+#ch-control {
+  height: 70px;
+  display: block;
+  margin-top: 5em;
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  width: 80px;
+  height: 35px;
+  background-color: cornflowerblue;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
