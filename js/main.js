@@ -19,6 +19,13 @@
    * @var {Array} of...?
    */
   var moves = [
+    Move1: [[6][3],[4][3]],
+    Move2: [[0][6],[2][5]],
+    Move3: [[6][2],[4][2]],
+    Move4: [[1][4],[2][4]],
+    Move5: [[6][6],[5][6]],
+    Move6: [[1][3],[3][3]],
+    Move7: [[7][5],[6][6]]
     // TODO: Fill me in!
   ]; // END moves
 
@@ -54,6 +61,8 @@
      */
     next: function(){
       // Doesn't this seem to be missing something?
+      for (var i in moves)
+
       return this;
     },
     /**
@@ -63,8 +72,8 @@
      * @todo Make this work!
      */
     prev: function(){
-      // Another good place for code...
-      return this;
+      console.log('made it!')// Another good place for code...
+      return "Rewind Tacer Bullet";
     },
     /**
      * Advance the internal game board to the last move.
@@ -105,7 +114,10 @@
      *
      * @todo Fill me in! ...and remove this comment.
      */
-    function applyMove(from, to){
+    applyMove: function(from, to){
+      board (to) = board (from);
+      board (from) = null;
+      return board.join ('\n' + ' |');
       // You should write something in here...
     } // END applyMove
   }; // END game
