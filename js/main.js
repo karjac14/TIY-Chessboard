@@ -10,9 +10,7 @@
    * @var {Array} of {Array} of {String|null}
    */
   var board = initial(); // initialize the `board`
-  var ctr = 0;
-  var moveFrom = 0;
-  var moveTo = 1;
+  var ctr = -1;
   var moveTotal = 7; // should be nine though...
   /**
    * List of moves for the "Catalan Opening: Closed Variation" suitable for use
@@ -22,13 +20,15 @@
    * @var {Array} of...?
    */
   var moves = [
-    [4,4,6,4],
+    [4,3,6,3],
     [2,5,0,6],
     [4,2,6,2],
     [2,4,1,4],
     [5,6,6,6],
     [3,3,1,3],
-    [6,6,7,5]
+    [6,6,7,5],
+    [1,4,0,5],
+    [5,5,7,6]
     // TODO: Fill me in!
   ]; // END moves
 
@@ -53,7 +53,7 @@
      */
     reset: function(){
       board = initial();
-
+      console.log (board.join ('\n' + '|'));
       return this;
     },
     /**
@@ -64,10 +64,12 @@
      */
     next: function(){
       // Doesn't this seem to be missing something?
-      console.log ("main forward reached!");
+      console.log ("main forward!");
+      if (ctr < 9) {
       ctr += 1;
-      game.applyMove();
-
+      console.log (ctr);
+      game.applyMove(true,false);
+    } 
       // return this;
     },
     /**
@@ -77,10 +79,12 @@
      * @todo Make this work!
      */
     prev: function(){
-      console.log('made it!')// Another good place for code...
+      console.log('main rewind')// Another good place for code...
+      if (ctr > -1) {
       ctr -= 1;
-      game.applyMove();
-      return "Rewind Tacer Bullet";
+      console.log (ctr);
+      game.applyMove(false,true);
+      }
     },
     /**
      * Advance the internal game board to the last move.
@@ -89,9 +93,8 @@
      * @todo Make this work!
      */
     end: function(){
-      ctr = moveTotal;
-      game.applyMove();
-      return this;
+      board = final();
+      console.log (board.join ('\n' + '|'));
     },
     /**
      * Provide a printable representation of the game board for use as a tracer
@@ -122,12 +125,16 @@
      *
      * @todo Fill me in! ...and remove this comment.
      */
-    applyMove: function(){
-        // board[4][4]=board[6][4];
-        // board[6][4]= null;
-      board[moves[ctr][0]][moves[ctr][1]]= board[moves[ctr][2]][moves[ctr][3]];
-      board[moves[ctr][2]][moves[ctr][3]]= null;
-      console.log (board.join ('\n' + ' |'));
+    applyMove: function(from, to){
+      if(from){
+        board[moves[ctr][0]][moves[ctr][1]]= board[moves[ctr][2]][moves[ctr][3]];
+        board[moves[ctr][2]][moves[ctr][3]]= ' ';
+        console.log (board.join ('\n' + '|'));
+      } else if (to === true ){
+        board[moves[ctr][2]][moves[ctr][3]]= board[moves[ctr][0]][moves[ctr][1]];
+        board[moves[ctr][0]][moves[ctr][1]]= ' ';
+        console.log (board.join ('\n' + '|'));
+      }
       // return board.join ('\n' + ' |');
 
       // You should write something in here...
@@ -141,16 +148,30 @@
    */
   function initial(){
     return [
-      [ 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
+      [ '|R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
       [ 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' ],
-      Array(8).fill(null),
-      Array(8).fill(null),
-      Array(8).fill(null),
-      Array(8).fill(null),
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
       [ 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' ],
       [ 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' ],
     ];
   } // END initial
+
+  function final(){
+    return [
+      [ '|R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
+      [ 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' ],
+      [ 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' ],
+    ];
+  } // END initial
+
 
 // You are not expected to understand anything below this line...
 })(window || module && module.exports || this);

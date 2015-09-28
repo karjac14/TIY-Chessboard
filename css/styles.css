@@ -61,11 +61,11 @@
   size: 0.5em;
 }
 .block-light {
-  background-color: #FCD630;
+  background-color: #888888;
 }
 
 .block-dark {
-  background-color: #555555;
+  background-color: #FCD630;
 }
 
 .block p {
@@ -83,10 +83,10 @@
   text-align: center;
 }
 
-.button {
+button {
   display: inline-block;
   width: 80px;
-  height: 35px;
+  height: 70px;
   background-color: cornflowerblue;
   color: white;
   text-align: center;
