@@ -55,7 +55,7 @@
       console.log ("mainjs reset!");
       board = initial();
       console.log (board.join ('\n' + '|'));
-      return this;
+      return board;
     },
     /**
      * Advance the internal game board to the next move.
@@ -99,6 +99,7 @@
       console.log('mainjs end');
       board = final();
       console.log (board.join ('\n' + '|'));
+      return board;
     },
     /**
      * Provide a printable representation of the game board for use as a tracer
