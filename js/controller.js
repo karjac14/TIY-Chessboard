@@ -22,7 +22,7 @@
   jQuery('#rewind').on('click', function(){
     console.log('rewind clicked');
     var arr = game.reset();
-    transform (arr);
+    orig(arr);
 
     // TODO: Tell the Model -- `game` -- to advance to the next move...
     // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
@@ -32,7 +32,7 @@
   jQuery('#forward').on('click', function(event){
     console.log('forward clicked');
     var arr = game.end();
-    transform (arr);
+    last(arr);
     // TODO: Tell the Model -- `game` -- to advance to the previous move...
     // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
   });
@@ -81,7 +81,6 @@
 
 
 function transform (arr){
-  console.log (arr);
   if (arr[4][3] === 'p') {
     $('#D4').addClass('wpawn');
     $('#D2').removeClass('wpawn');
@@ -120,6 +119,57 @@ function transform (arr){
   }
 }
 
+function orig (arr){
+    // $('#D2').addClass('wpawn');
+    // $('#G8').addClass('bknight');
+    // $('#C2').addClass('wpawn');
+    // $('#E6').addClass('bpawn');
+    // $('#G2').addClass('wpawn');
+    // $('#D7').addClass('bpawn');
+    // $('#F1').addClass('wbishop');
+    // $('#F8').addClass('bbishop');
+    // $('#G1').addClass('wknight');
+
+    $('#D4').removeClass('wpawn');
+    $('#D2').addClass('wpawn');
+    $('#F6').removeClass('bknight');
+    $('#G8').addClass('bknight');
+    $('#C4').removeClass('wpawn');
+    $('#C2').addClass('wpawn');
+    $('#E6').removeClass('bpawn');
+    $('#E7').addClass('bpawn');
+    $('#G3').removeClass('wpawn');
+    $('#G2').addClass('wpawn');
+    $('#D5').removeClass('bpawn');
+    $('#D7').addClass('bpawn');
+    $('#G2').removeClass('wbishop');
+    $('#F1').addClass('wbishop');
+    $('#E7').removeClass('bbishop');
+    $('#F8').addClass('bbishop');
+    $('#F3').removeClass('wknight');
+    $('#G1').addClass('wknight');
+}
+
+function last (arr){
+    $('#D4').addClass('wpawn');
+    $('#D2').removeClass('wpawn');
+    $('#F6').addClass('bknight');
+    $('#G8').removeClass('bknight');
+    $('#C4').addClass('wpawn');
+    $('#C2').removeClass('wpawn');
+    $('#E6').addClass('bpawn');
+    $('#E7').removeClass('bpawn');
+    $('#G3').addClass('wpawn');
+    $('#G2').removeClass('wpawn');
+    $('#D5').addClass('bpawn');
+    $('#D7').removeClass('bpawn');
+    $('#G2').addClass('wbishop');
+    $('#F1').removeClass('wbishop');
+    $('#E7').addClass('bbishop');
+    $('#F8').removeClass('bbishop');
+    $('#F3').addClass('wknight');
+    $('#G1').removeClass('wknight');
+}
 
 // Am I supposed to recognize this?
 })(window || module && module.exports || this)
