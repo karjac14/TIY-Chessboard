@@ -36,9 +36,16 @@
   border: 2px solid gray;
 }
 
+.board {
+  font-size: 2.5em;
+  text-align: center;
+  vertical-align: middle;
+}
+
 
 
 #empty, #x1,#x2,#x3,#x4,#x5,#x6,#x7,#x8 {
+  font-size: 0.5em;
   text-align: right;
   border: none;
   color: #555555;
@@ -46,6 +53,7 @@
 }
 
 #xA,#xB,#xC,#xD,#xE,#xF,#xG,#xH {
+  font-size: 0.5em;
   border: none;
   text-align: center;
   vertical-align: baseline;
@@ -53,15 +61,19 @@
   size: 0.5em;
 }
 .block-light {
-  background-color: #FCD630;
+  background-color: #888888;
 }
 
 .block-dark {
-  background-color: #555555;
+  background-color: #FCD630;
 }
 
 .block p {
   display: none;
+}
+
+.block p.piece {
+  display: block;
 }
 
 #ch-control {
@@ -71,12 +83,59 @@
   text-align: center;
 }
 
-.button {
+button {
   display: inline-block;
   width: 80px;
-  height: 35px;
+  height: 70px;
   background-color: cornflowerblue;
   color: white;
   text-align: center;
   vertical-align: middle;
+}
+
+/*chess pieces taken from http://nealchester.com/special-characters/ */
+
+.brook:before {
+  content: "\265C";
+}
+
+.bknight:before {
+  content: "\265E";
+}
+
+.bbishop:before {
+  content: "\265D";
+}
+
+.bqueen:before {
+  content: "\265A";
+}
+.bking:before {
+  content: "\265B";
+}
+
+.bpawn:before {
+  content: "\265F";
+}
+
+.wrook:before {
+  content: "\2656";
+}
+
+.wbishop:before {
+  content: "\2657";
+}
+
+.wknight:before {
+  content: "\2658";
+}
+
+.wking:before {
+  content: "\2655";
+}
+.wqueen:before {
+  content: "\2654";
+}
+.wpawn:before {
+  content: "\2659";
 }

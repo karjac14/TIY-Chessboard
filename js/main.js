@@ -10,7 +10,8 @@
    * @var {Array} of {Array} of {String|null}
    */
   var board = initial(); // initialize the `board`
-
+  var ctr = -1;
+ // should be nine though...
   /**
    * List of moves for the "Catalan Opening: Closed Variation" suitable for use
    * as arguments to `applyMove` below.
@@ -19,6 +20,15 @@
    * @var {Array} of...?
    */
   var moves = [
+    [4,3,6,3],  // [destination, destination, to, to]
+    [2,5,0,6],  // [destination, destination, to, to]
+    [4,2,6,2],  // [destination, destination, to, to]
+    [2,4,1,4],  // [destination, destination, to, to]
+    [5,6,6,6],  // [destination, destination, to, to]
+    [3,3,1,3],  // [destination, destination, to, to]
+    [6,6,7,5],  // [destination, destination, to, to]
+    [1,4,0,5],  // [destination, destination, to, to]
+    [5,5,7,6]   // [destination, destination, to, to]
     // TODO: Fill me in!
   ]; // END moves
 
@@ -42,9 +52,10 @@
      * @return {Object} the game object for Method Chaining
      */
     reset: function(){
+      console.log ("mainjs reset!");
       board = initial();
-
-      return this;
+      console.log (board.join ('\n' + '|'));
+      return board;
     },
     /**
      * Advance the internal game board to the next move.
@@ -54,7 +65,14 @@
      */
     next: function(){
       // Doesn't this seem to be missing something?
-      return this;
+      console.log ("mainjs next!");
+      if (ctr < moves.length) {
+      ctr += 1;
+      console.log (ctr);
+      game.applyMove(true,false);
+      return board;
+    }
+      // return this;
     },
     /**
      * Advance the internal game board to the previous move.
@@ -63,8 +81,13 @@
      * @todo Make this work!
      */
     prev: function(){
-      // Another good place for code...
-      return this;
+      for (var i =0; i < 1; i++){
+        game.applyMove(false,true);
+        console.log('main back');// Another good place for code...
+        console.log (ctr);
+        ctr -= 1;
+        return board;
+      }
     },
     /**
      * Advance the internal game board to the last move.
@@ -73,8 +96,10 @@
      * @todo Make this work!
      */
     end: function(){
-      // Write some code here...
-      return this;
+      console.log('mainjs end');
+      board = final();
+      console.log (board.join ('\n' + '|'));
+      return board;
     },
     /**
      * Provide a printable representation of the game board for use as a tracer
@@ -105,7 +130,19 @@
      *
      * @todo Fill me in! ...and remove this comment.
      */
-    function applyMove(from, to){
+    applyMove: function(from,to){
+      if(from === true){
+        //board[x][y] = board [z][w];
+        board [moves[ctr][0]] [moves[ctr][1]] = board[moves[ctr][2]][moves[ctr][3]];
+        board [moves[ctr][2]] [moves[ctr][3]] = ' ';
+        console.log (board.join ('\n' + '|'));
+      } if (to === true ){
+        board[moves[ctr][2]][moves[ctr][3]]= board[moves[ctr][0]][moves[ctr][1]];
+        board[moves[ctr][0]][moves[ctr][1]]= ' ';
+        console.log (board.join ('\n' + '|'));
+      }
+      // return board.join ('\n' + ' |');
+
       // You should write something in here...
     } // END applyMove
   }; // END game
@@ -117,16 +154,30 @@
    */
   function initial(){
     return [
-      [ 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
+      [ '|R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
       [ 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' ],
-      Array(8).fill(null),
-      Array(8).fill(null),
-      Array(8).fill(null),
-      Array(8).fill(null),
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
       [ 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' ],
       [ 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' ],
     ];
   } // END initial
+
+  function final(){
+    return [
+      [ '|R','N', 'B', 'Q', 'K', ' ', ' ', 'R' ],
+      [ 'P', 'P', 'P', ' ', 'B', 'P', 'P', 'P' ],
+      [ ' ', ' ', ' ', ' ', 'P', 'N', ' ', ' ' ],
+      [ ' ', ' ', ' ', 'P', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', 'p', 'p', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', 'n', 'p', ' ' ],
+      [ 'p', 'p', ' ', ' ', 'p', 'p', 'b', 'p' ],
+      [ 'r', 'n', 'b', 'q', 'k', ' ', ' ', 'r' ],
+    ];
+  } // END initial
+
 
 // You are not expected to understand anything below this line...
 })(window || module && module.exports || this);
