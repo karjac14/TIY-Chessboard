@@ -21,7 +21,7 @@
   // Controller for "next move"...
   jQuery('#rewind').on('click', function(){
     console.log('rewind clicked');
-    main.prev();
+    game.prev();
 
     // TODO: Tell the Model -- `game` -- to advance to the next move...
     // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
@@ -30,6 +30,7 @@
   // Controller for "previous move"...
   jQuery('#forward').on('click', function(event){
     console.log('forward clicked');
+    game.next();
     // TODO: Tell the Model -- `game` -- to advance to the previous move...
     // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
   });
@@ -38,6 +39,7 @@
   // Controller for "previous move"...
   jQuery('#playpause').on('click', function(event){
     console.log('play clicked');
+
     // TODO: Tell the Model -- `game` -- to advance to the previous move...
     // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
   });
