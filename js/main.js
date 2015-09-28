@@ -52,6 +52,7 @@
      * @return {Object} the game object for Method Chaining
      */
     reset: function(){
+      console.log ("mainjs reset!");
       board = initial();
       console.log (board.join ('\n' + '|'));
       return this;
@@ -64,12 +65,13 @@
      */
     next: function(){
       // Doesn't this seem to be missing something?
-      console.log ("main forward!");
+      console.log ("mainjs next!");
       if (ctr < 9) {
       ctr += 1;
       console.log (ctr);
       game.applyMove(true,false);
-    } 
+      return board;
+    }
       // return this;
     },
     /**
@@ -79,11 +81,12 @@
      * @todo Make this work!
      */
     prev: function(){
-      console.log('main rewind')// Another good place for code...
-      if (ctr > -1) {
-      ctr -= 1;
-      console.log (ctr);
-      game.applyMove(false,true);
+      for (var i =0; i < 1; i++){
+        game.applyMove(false,true);
+        console.log('main back');// Another good place for code...
+        console.log (ctr);
+        ctr -= 1;
+        return board;
       }
     },
     /**
@@ -93,6 +96,7 @@
      * @todo Make this work!
      */
     end: function(){
+      console.log('mainjs end');
       board = final();
       console.log (board.join ('\n' + '|'));
     },
@@ -125,12 +129,12 @@
      *
      * @todo Fill me in! ...and remove this comment.
      */
-    applyMove: function(from, to){
-      if(from){
+    applyMove: function(from,to){
+      if(from === true){
         board[moves[ctr][0]][moves[ctr][1]]= board[moves[ctr][2]][moves[ctr][3]];
         board[moves[ctr][2]][moves[ctr][3]]= ' ';
         console.log (board.join ('\n' + '|'));
-      } else if (to === true ){
+      } if (to === true ){
         board[moves[ctr][2]][moves[ctr][3]]= board[moves[ctr][0]][moves[ctr][1]];
         board[moves[ctr][0]][moves[ctr][1]]= ' ';
         console.log (board.join ('\n' + '|'));
@@ -161,14 +165,14 @@
 
   function final(){
     return [
-      [ '|R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
-      [ 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' ],
-      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
-      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
-      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
-      [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
-      [ 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' ],
-      [ 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' ],
+      [ '|R','N', 'B', 'Q', 'K', ' ', ' ', 'R' ],
+      [ 'P', 'P', 'P', ' ', 'B', 'P', 'P', 'P' ],
+      [ ' ', ' ', ' ', ' ', 'P', 'N', ' ', ' ' ],
+      [ ' ', ' ', ' ', 'P', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', 'p', 'p', ' ', ' ', ' ', ' ' ],
+      [ ' ', ' ', ' ', ' ', ' ', 'n', 'p', ' ' ],
+      [ 'p', 'p', ' ', ' ', 'p', 'p', 'b', 'p' ],
+      [ 'r', 'n', 'b', 'q', 'k', ' ', ' ', 'r' ],
     ];
   } // END initial
 
