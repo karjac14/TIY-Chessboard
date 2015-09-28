@@ -11,7 +11,7 @@
    */
   var board = initial(); // initialize the `board`
   var ctr = -1;
-  var moveTotal = 7; // should be nine though...
+ // should be nine though...
   /**
    * List of moves for the "Catalan Opening: Closed Variation" suitable for use
    * as arguments to `applyMove` below.
@@ -20,15 +20,15 @@
    * @var {Array} of...?
    */
   var moves = [
-    [4,3,6,3],
-    [2,5,0,6],
-    [4,2,6,2],
-    [2,4,1,4],
-    [5,6,6,6],
-    [3,3,1,3],
-    [6,6,7,5],
-    [1,4,0,5],
-    [5,5,7,6]
+    [4,3,6,3],  // [destination, destination, to, to]
+    [2,5,0,6],  // [destination, destination, to, to]
+    [4,2,6,2],  // [destination, destination, to, to]
+    [2,4,1,4],  // [destination, destination, to, to]
+    [5,6,6,6],  // [destination, destination, to, to]
+    [3,3,1,3],  // [destination, destination, to, to]
+    [6,6,7,5],  // [destination, destination, to, to]
+    [1,4,0,5],  // [destination, destination, to, to]
+    [5,5,7,6]   // [destination, destination, to, to]
     // TODO: Fill me in!
   ]; // END moves
 
@@ -66,7 +66,7 @@
     next: function(){
       // Doesn't this seem to be missing something?
       console.log ("mainjs next!");
-      if (ctr < 9) {
+      if (ctr < moves.length) {
       ctr += 1;
       console.log (ctr);
       game.applyMove(true,false);
@@ -132,8 +132,9 @@
      */
     applyMove: function(from,to){
       if(from === true){
-        board[moves[ctr][0]][moves[ctr][1]]= board[moves[ctr][2]][moves[ctr][3]];
-        board[moves[ctr][2]][moves[ctr][3]]= ' ';
+        //board[x][y] = board [z][w];
+        board [moves[ctr][0]] [moves[ctr][1]] = board[moves[ctr][2]][moves[ctr][3]];
+        board [moves[ctr][2]] [moves[ctr][3]] = ' ';
         console.log (board.join ('\n' + '|'));
       } if (to === true ){
         board[moves[ctr][2]][moves[ctr][3]]= board[moves[ctr][0]][moves[ctr][1]];

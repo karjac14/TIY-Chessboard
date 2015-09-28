@@ -81,11 +81,11 @@
 
 
 function transform (arr){
-  if (arr[4][3] === 'p') {
-    $('#D4').addClass('wpawn');
-    $('#D2').removeClass('wpawn');
+  if (arr[4][3] === 'p') {          //basically the same as board[4][3]
+    $('#D4').addClass('wpawn');     //add class to div#d4 in html
+    $('#D2').removeClass('wpawn');  //remove class to div#d2 in html
   }
-  if (arr[2][5] === 'N') {
+  if (arr[2][5] === 'N') {          //basically the same as board[2][5]
     $('#F6').addClass('bknight');
     $('#G8').removeClass('bknight');
   }
