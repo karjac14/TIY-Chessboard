@@ -10,7 +10,7 @@
    * @var {Array} of {Array} of {String|null}
    */
   var board = initial(); // initialize the `board`
-  var moveCounter = 0;
+  var ctr = 0;
   var moveFrom = 0;
   var moveTo = 1;
   var moveTotal = 7; // should be nine though...
@@ -22,13 +22,13 @@
    * @var {Array} of...?
    */
   var moves = [
-    [6,3,4,3],
-    [0,6,2,5],
-    [6,2,4,2],
-    [1,4,2,4],
-    [6,6,5,6],
-    [1,3,3,3],
-    [7,5,6,6]
+    [4,4,6,4],
+    [2,5,0,6],
+    [4,2,6,2],
+    [2,4,1,4],
+    [5,6,6,6],
+    [3,3,1,3],
+    [6,6,7,5]
     // TODO: Fill me in!
   ]; // END moves
 
@@ -65,8 +65,8 @@
     next: function(){
       // Doesn't this seem to be missing something?
       console.log ("main forward reached!");
-      moveCounter += 1;
-      applyMove();
+      ctr += 1;
+      game.applyMove();
 
       // return this;
     },
@@ -78,9 +78,9 @@
      */
     prev: function(){
       console.log('made it!')// Another good place for code...
+      ctr -= 1;
+      game.applyMove();
       return "Rewind Tacer Bullet";
-      moveCounter -= 1;
-      applyMove();
     },
     /**
      * Advance the internal game board to the last move.
@@ -89,8 +89,8 @@
      * @todo Make this work!
      */
     end: function(){
-      moveCurrent = moveTotal;
-      // Write some code here...
+      ctr = moveTotal;
+      game.applyMove();
       return this;
     },
     /**
@@ -122,12 +122,13 @@
      *
      * @todo Fill me in! ...and remove this comment.
      */
-    applyMove: function(ifrom, to){
-      // ifrom = moves[moveCurrent].[0];
-      // to = moves[moveCurrentPlusOne].[1];
-      board[moves[moveCounter][0]][moves[moveCounter][1]]= board[moves[moveCounter][2]][moves[moveCounter][3]];
+    applyMove: function(){
+        // board[4][4]=board[6][4];
+        // board[6][4]= null;
+      board[moves[ctr][0]][moves[ctr][1]]= board[moves[ctr][2]][moves[ctr][3]];
+      board[moves[ctr][2]][moves[ctr][3]]= null;
       console.log (board.join ('\n' + ' |'));
-      return board.join ('\n' + ' |');
+      // return board.join ('\n' + ' |');
 
       // You should write something in here...
     } // END applyMove
@@ -152,5 +153,4 @@
   } // END initial
 
 // You are not expected to understand anything below this line...
-});
-// (window || module && module.exports || this);
+})(window || module && module.exports || this);
