@@ -20,17 +20,29 @@
    * @var {Array} of...?
    */
   var moves = [
-    [4,3,6,3],  // [destination, destination, to, to]
-    [2,5,0,6],  // [destination, destination, to, to]
-    [4,2,6,2],  // [destination, destination, to, to]
-    [2,4,1,4],  // [destination, destination, to, to]
-    [5,6,6,6],  // [destination, destination, to, to]
-    [3,3,1,3],  // [destination, destination, to, to]
-    [6,6,7,5],  // [destination, destination, to, to]
-    [1,4,0,5],  // [destination, destination, to, to]
-    [5,5,7,6]   // [destination, destination, to, to]
+    // {from: {rank: 4, file: 3}, to: {rank: 4, file: 3}}, // just a filler... no effect
+    {from: {rank: 6, file: 3}, to: {rank: 4, file: 3}}, // first move from 6,3 to 4,3
+    {from: {rank: 0, file: 6}, to: {rank: 2, file: 5}}, // second move
+    {from: {rank: 6, file: 2}, to: {rank: 4, file: 2}}, // the rest of the move
+    {from: {rank: 1, file: 4}, to: {rank: 2, file: 4}},
+    {from: {rank: 6, file: 6}, to: {rank: 5, file: 6}},
+    {from: {rank: 1, file: 3}, to: {rank: 3, file: 3}},
+    {from: {rank: 7, file: 5}, to: {rank: 6, file: 6}},
+    {from: {rank: 0, file: 5}, to: {rank: 1, file: 4}},
+    {from: {rank: 7, file: 6}, to: {rank: 5, file: 5}},
+  ];
+
+    // [4,3,6,3],  // [destination, destination, to, to]
+    // [2,5,0,6],  // [destination, destination, to, to]
+    // [4,2,6,2],  // [destination, destination, to, to]
+    // [2,4,1,4],  // [destination, destination, to, to]
+    // [5,6,6,6],  // [destination, destination, to, to]
+    // [3,3,1,3],  // [destination, destination, to, to]
+    // [6,6,7,5],  // [destination, destination, to, to]
+    // [1,4,0,5],  // [destination, destination, to, to]
+    // [5,5,7,6]   // [destination, destination, to, to]
     // TODO: Fill me in!
-  ]; // END moves
+ // END moves
 
   // var current; TODO: do we need this?
 
@@ -69,7 +81,11 @@
       if (ctr < moves.length) {
       ctr += 1;
       console.log (ctr);
-      game.applyMove(true,false);
+      var curFromMove = moves[ctr].from;
+      var curToMove = moves[ctr].to;
+      console.log (curFromMove);
+      console.log (curToMove);
+      game.applyMove(curFromMove, curToMove);
       return board;
     }
       // return this;
@@ -81,11 +97,13 @@
      * @todo Make this work!
      */
     prev: function(){
-      for (var i =0; i < 1; i++){
-        game.applyMove(false,true);
-        console.log('main back');// Another good place for code...
-        console.log (ctr);
+      if (ctr >= 0){
+        var curFromMove = moves[ctr].to; //inversed `from and `to`
+        var curToMove = moves[ctr].from; //inversed `from and `to`
+        game.applyMove(curFromMove, curToMove);
+        console.log('main back');
         ctr -= 1;
+        console.log (ctr);
         return board;
       }
     },
@@ -96,11 +114,17 @@
      * @todo Make this work!
      */
     end: function(){
-      console.log('mainjs end');
-      board = final();
-      console.log (board.join ('\n' + '|'));
-      return board;
-    },
+      while (ctr < moves.length) {
+      ctr += 1;
+      console.log (ctr);
+      var curFromMove = moves[ctr].from;
+      var curToMove = moves[ctr].to;
+      console.log (curFromMove);
+      console.log (curToMove);
+      game.applyMove(curFromMove, curToMove);
+    }
+    return board;
+  },
     /**
      * Provide a printable representation of the game board for use as a tracer
      *
@@ -131,19 +155,11 @@
      * @todo Fill me in! ...and remove this comment.
      */
     applyMove: function(from,to){
-      if(from === true){
         //board[x][y] = board [z][w];
-        board [moves[ctr][0]] [moves[ctr][1]] = board[moves[ctr][2]][moves[ctr][3]];
-        board [moves[ctr][2]] [moves[ctr][3]] = ' ';
+        board[to.rank][to.file] = board[from.rank][from.file];
+        board[from.rank][from.file]= ' ';
         console.log (board.join ('\n' + '|'));
-      } if (to === true ){
-        board[moves[ctr][2]][moves[ctr][3]]= board[moves[ctr][0]][moves[ctr][1]];
-        board[moves[ctr][0]][moves[ctr][1]]= ' ';
-        console.log (board.join ('\n' + '|'));
-      }
-      // return board.join ('\n' + ' |');
-
-      // You should write something in here...
+        return board.join ('\n' + ' |');
     } // END applyMove
   }; // END game
 
@@ -165,18 +181,6 @@
     ];
   } // END initial
 
-  function final(){
-    return [
-      [ '|R','N', 'B', 'Q', 'K', ' ', ' ', 'R' ],
-      [ 'P', 'P', 'P', ' ', 'B', 'P', 'P', 'P' ],
-      [ ' ', ' ', ' ', ' ', 'P', 'N', ' ', ' ' ],
-      [ ' ', ' ', ' ', 'P', ' ', ' ', ' ', ' ' ],
-      [ ' ', ' ', 'p', 'p', ' ', ' ', ' ', ' ' ],
-      [ ' ', ' ', ' ', ' ', ' ', 'n', 'p', ' ' ],
-      [ 'p', 'p', ' ', ' ', 'p', 'p', 'b', 'p' ],
-      [ 'r', 'n', 'b', 'q', 'k', ' ', ' ', 'r' ],
-    ];
-  } // END initial
 
 
 // You are not expected to understand anything below this line...

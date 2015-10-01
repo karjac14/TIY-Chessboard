@@ -7,80 +7,41 @@
    * 3. What `CALLBACK` should be run when the interaction happens?
    * 4. What should my `CALLBACK` do with it's `EVENT`...?
    */
-  // document.querySelector(SELECTOR)
-  //   .addEventListener(TYPE, CALLBACK);
-  // // AKA
-  // jQuery(SELECTOR).on(TYPE, CALLBACK);
-  // // Where CALLBACK is...
-  // function CALLBACK (EVENT){
-  //   // Do something with Models and Views...
-  //   // Maybe do something with EVENT...?
-  // }
 
 
-  // Controller for "next move"...
+
+  // Controller for "reset move"...
   jQuery('#rewind').on('click', function(){
     console.log('rewind clicked');
     var arr = game.reset();
     orig(arr);
 
-    // TODO: Tell the Model -- `game` -- to advance to the next move...
-    // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
   });
 
-  // Controller for "previous move"...
+  // Controller for "fast forward move"...
   jQuery('#forward').on('click', function(event){
     console.log('forward clicked');
     var arr = game.end();
-    last(arr);
-    // TODO: Tell the Model -- `game` -- to advance to the previous move...
-    // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
+    transform(arr);
   });
 
-
-  // Controller for "previous move"...
+// Controller for "next move"...
   jQuery('#next').on('click', function(event){
     console.log('play clicked');
     var arr = game.next();
-    transform (arr);
-    // TODO: Tell the Model -- `game` -- to advance to the previous move...
-    // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
+    nextTransform (arr);
   });
 
-  // Controller for "fast-forward"...
-  // jQuery(/* your "fast-forward" button */).on('click', function(event){  /* wat? */
-  //   // TODO: Fire tracer bullet!
-  //   // TODO: Tell the Model -- `game` -- to advance to the last move...
-  //   // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
-  // });
-
-  // Controller for anything else...
+// Controller for "back move"...
   jQuery('#back').on('click', function(event){
-    console.log('back clicked');
     var arr = game.prev();
-    transform (arr);
-    // TODO: Tell the Model -- `game` -- to do something it knows how to do...
-    // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
+    backTransform (arr);
   });
 
+//  altering the classes to change beahvious of html element
 
 
-  // // Controller for "fast-forward"...
-  // jQuery(/* your "fast-forward" button */).on('click', function(event){
-  //   // TODO: Fire tracer bullet!
-  //   // TODO: Tell the Model -- `game` -- to advance to the last move...
-  //   // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
-  // });
-  //
-  // // Controller for anything else...
-  // jQuery(/* any other buttons out there? */).on('click', function(event){
-  //   // TODO: Fire tracer bullet!
-  //   // TODO: Tell the Model -- `game` -- to do something it knows how to do...
-  //   // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
-  // });
-
-
-function transform (arr){
+function nextTransform (arr){
   if (arr[4][3] === 'p') {          //basically the same as board[4][3]
     $('#D4').addClass('wpawn');     //add class to div#d4 in html
     $('#D2').removeClass('wpawn');  //remove class to div#d2 in html
@@ -119,16 +80,49 @@ function transform (arr){
   }
 }
 
+function backTransform (arr){
+  if (arr[6][3] === 'p') {          //basically the same as board[4][3]
+    $('#D2').addClass('wpawn');     //add class to div#d4 in html
+    $('#D4').removeClass('wpawn');  //remove class to div#d2 in html
+  }
+  if (arr[0][6] === 'N') {          //basically the same as board[2][5]
+    $('#G8').addClass('bknight');
+    $('#F6').removeClass('bknight');
+  }
+  if (arr[6][2] === 'p') {
+    $('#C2').addClass('wpawn');
+    $('#C4').removeClass('wpawn');
+  }
+  if (arr[1][4] === 'P') {
+    $('#E7').addClass('bpawn');
+    $('#E6').removeClass('bpawn');
+  }
+  if (arr[6][6] === 'p') {
+    $('#G2').addClass('wpawn');
+    $('#G3').removeClass('wpawn');
+  }
+  if (arr[1][3] === 'P') {
+    $('#D7').addClass('bpawn');
+    $('#D5').removeClass('bpawn');
+  }
+  if (arr[7][5] === 'b') {
+    $('#F1').addClass('wbishop');
+    $('#G2').removeClass('wbishop');
+  }
+  if (arr[0][5] === 'B') {
+    $('#F8').addClass('bbishop');
+    $('#E7').removeClass('bbishop');
+  }
+  if (arr[7][6] === 'n') {
+    $('#G1').addClass('wknight');
+    $('#F3').removeClass('wknight');
+  }
+}
+
+
+
 function orig (arr){
-    // $('#D2').addClass('wpawn');
-    // $('#G8').addClass('bknight');
-    // $('#C2').addClass('wpawn');
-    // $('#E6').addClass('bpawn');
-    // $('#G2').addClass('wpawn');
-    // $('#D7').addClass('bpawn');
-    // $('#F1').addClass('wbishop');
-    // $('#F8').addClass('bbishop');
-    // $('#G1').addClass('wknight');
+
 
     $('#D4').removeClass('wpawn');
     $('#D2').addClass('wpawn');
