@@ -1,141 +1,238 @@
+@charset "UTF-8";
+*, *::after *::before {
+  box-sizing: border-box; }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+body {
+  width: 100%;
+  font-family: 'Vollkorn', serif; }
 
-#main {
-  margin: auto;
-  width: 566px;
-  height: 800px;
-}
-
-.board {
-  display: block;
-  margin: 0;
-}
-
-.game-name {
-  width: 576px;
-  height: 100px;
-  text-align: center;
-}
-
-
-
-.game-name h1 {
-  font-family: Verdana;
-
-}
-
-.board .side-label, .board .block{
-  float: left;
-  display: inline-block;
-  margin: 0;
-  width: 60px;
-  height: 60px;
-  border: 2px solid gray;
-}
-
-.board {
-  font-size: 2.5em;
-  text-align: center;
-  vertical-align: middle;
-}
-
-
-
-#empty, #x1,#x2,#x3,#x4,#x5,#x6,#x7,#x8 {
-  font-size: 0.5em;
-  text-align: right;
-  border: none;
-  color: #555555;
-  size: 0.5em;
-}
-
-#xA,#xB,#xC,#xD,#xE,#xF,#xG,#xH {
-  font-size: 0.5em;
-  border: none;
-  text-align: center;
-  vertical-align: baseline;
-  color: #555555;
-  size: 0.5em;
-}
-.block-light {
-  background-color: #888888;
-}
-
-.block-dark {
-  background-color: #FCD630;
-}
-
-.block p {
-  display: none;
-}
-
-.block p.piece {
-  display: block;
-}
-
-#ch-control {
-  height: 70px;
-  display: block;
-  margin-top: 5em;
-  text-align: center;
-}
-
-button {
-  display: inline-block;
-  width: 80px;
-  height: 70px;
-  background-color: cornflowerblue;
-  color: white;
-  text-align: center;
-  vertical-align: middle;
-}
-
-/*chess pieces taken from http://nealchester.com/special-characters/ */
+#container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  vertical-align: middle; }
+  #container hr {
+    padding: 0;
+    border: none;
+    border-top: medium double #924639;
+    color: #924639;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%; }
+    #container hr:after {
+      content: "§";
+      display: inline-block;
+      position: relative;
+      top: -0.7em;
+      font-size: 1.5em;
+      padding: 0 0.25em;
+      background: white; }
+  #container header {
+    display: inline-block;
+    width: 44%;
+    margin: auto 0;
+    text-align: center;
+    vertical-align: middle; }
+    #container header h1 {
+      text-align: center;
+      font-size: 2.1em;
+      color: #924639;
+      margin: 1.5em 1.2em auto; }
+    #container header h2 {
+      text-align: center;
+      font-size: 1em;
+      color: #313131; }
+    #container header p {
+      margin: 0 auto;
+      width: 80%;
+      font-size: 0.7em;
+      font-style: italic;
+      font-weight: lighter;
+      text-align: center;
+      padding: 5px 5%;
+      border-top: 1.5px solid #DDDDDD;
+      border-bottom: 1.5px solid #DDDDDD; }
+    #container header nav {
+      text-align: center;
+      width: 99%;
+      margin: 5% auto; }
+      #container header nav button {
+        margin: 2px auto; }
+  #container section {
+    display: inline-block;
+    width: 55%;
+    margin-top: 1%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle; }
+    #container section table {
+      width: 100%;
+      margin-top: 1%;
+      margin-bottom: 5%;
+      margin-left: 0;
+      margin-right: 0;
+      border-collapse: collapse; }
+      #container section table tr:nth-of-type(odd) td:nth-of-type(odd) {
+        background: #888888; }
+      #container section table tr:nth-of-type(odd) td:nth-of-type(even) {
+        background: #DDDDDD; }
+      #container section table tr:nth-of-type(even) td:nth-of-type(odd) {
+        background: #DDDDDD; }
+      #container section table tr:nth-of-type(even) td:nth-of-type(even) {
+        background: #888888; }
+      #container section table tr th {
+        width: 10%;
+        font-size: 1.0vw;
+        font-weight: 300; }
+      #container section table tr td {
+        width: 10%;
+        padding-bottom: 10%;
+        border: 0;
+        text-align: center;
+        vertical-align: middle;
+        position: relative; }
+        #container section table tr td:first-child {
+          font-size: 1vw;
+          align-content: center;
+          text-align: right;
+          padding-right: 10px;
+          width: 10%;
+          background: #FFFFFF; }
+          #container section table tr td:first-child span {
+            position: absolute;
+            top: 25%; }
+        #container section table tr td:last-child {
+          font-size: 1vw;
+          align-content: center;
+          text-align: left;
+          padding-left: 5px;
+          width: 10%;
+          background: #FFFFFF; }
+          #container section table tr td:last-child span {
+            position: absolute;
+            top: 25%; }
 
 .brook:before {
   content: "\265C";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
 
 .bknight:before {
   content: "\265E";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
 
 .bbishop:before {
   content: "\265D";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
 
 .bqueen:before {
   content: "\265A";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
+
 .bking:before {
   content: "\265B";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
 
 .bpawn:before {
   content: "\265F";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
 
 .wrook:before {
   content: "\2656";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
 
 .wbishop:before {
   content: "\2657";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
 
 .wknight:before {
   content: "\2658";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
 
 .wking:before {
   content: "\2655";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
+
 .wqueen:before {
   content: "\2654";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }
+
 .wpawn:before {
   content: "\2659";
-}
+  font-size: 3.2vw;
+  display: block;
+  position: absolute;
+  top: 4%;
+  bottom: 5%;
+  left: 0;
+  right: 0; }

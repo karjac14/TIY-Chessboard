@@ -7,169 +7,144 @@
    * 3. What `CALLBACK` should be run when the interaction happens?
    * 4. What should my `CALLBACK` do with it's `EVENT`...?
    */
-  // document.querySelector(SELECTOR)
-  //   .addEventListener(TYPE, CALLBACK);
-  // // AKA
-  // jQuery(SELECTOR).on(TYPE, CALLBACK);
-  // // Where CALLBACK is...
-  // function CALLBACK (EVENT){
-  //   // Do something with Models and Views...
-  //   // Maybe do something with EVENT...?
-  // }
 
 
-  // Controller for "next move"...
+
+  // Controller for "reset move"...
+  jQuery('#play').on('click', function(){
+    console.log('play clicked');
+    setInterval(game.next, 1000);
+    transform ();
+  });
+
+
+
   jQuery('#rewind').on('click', function(){
     console.log('rewind clicked');
-    var arr = game.reset();
-    orig(arr);
-
-    // TODO: Tell the Model -- `game` -- to advance to the next move...
-    // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
+    game.reset();
+    transform ();
   });
 
-  // Controller for "previous move"...
+  // Controller for "fast forward move"...
   jQuery('#forward').on('click', function(event){
     console.log('forward clicked');
-    var arr = game.end();
-    last(arr);
-    // TODO: Tell the Model -- `game` -- to advance to the previous move...
-    // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
+    game.end();
+    transform ();
   });
 
-
-  // Controller for "previous move"...
+// Controller for "next move"...
   jQuery('#next').on('click', function(event){
-    console.log('play clicked');
-    var arr = game.next();
-    transform (arr);
-    // TODO: Tell the Model -- `game` -- to advance to the previous move...
-    // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
+    console.log('next clicked');
+    game.next();
+    transform ();
   });
 
-  // Controller for "fast-forward"...
-  // jQuery(/* your "fast-forward" button */).on('click', function(event){  /* wat? */
-  //   // TODO: Fire tracer bullet!
-  //   // TODO: Tell the Model -- `game` -- to advance to the last move...
-  //   // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
-  // });
-
-  // Controller for anything else...
+// Controller for "back move"...
   jQuery('#back').on('click', function(event){
-    console.log('back clicked');
-    var arr = game.prev();
-    transform (arr);
-    // TODO: Tell the Model -- `game` -- to do something it knows how to do...
-    // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
+    game.prev();
+    transform ();
   });
 
 
-
-  // // Controller for "fast-forward"...
-  // jQuery(/* your "fast-forward" button */).on('click', function(event){
-  //   // TODO: Fire tracer bullet!
-  //   // TODO: Tell the Model -- `game` -- to advance to the last move...
-  //   // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
-  // });
-  //
-  // // Controller for anything else...
-  // jQuery(/* any other buttons out there? */).on('click', function(event){
-  //   // TODO: Fire tracer bullet!
-  //   // TODO: Tell the Model -- `game` -- to do something it knows how to do...
-  //   // TODO: Tell the View -- `.chessboard` -- to update the position of the pieces based on `game.board()`
-  // });
+// view helper starts here
 
 
-function transform (arr){
-  if (arr[4][3] === 'p') {          //basically the same as board[4][3]
-    $('#D4').addClass('wpawn');     //add class to div#d4 in html
-    $('#D2').removeClass('wpawn');  //remove class to div#d2 in html
-  }
-  if (arr[2][5] === 'N') {          //basically the same as board[2][5]
-    $('#F6').addClass('bknight');
-    $('#G8').removeClass('bknight');
-  }
-  if (arr[4][2] === 'p') {
-    $('#C4').addClass('wpawn');
-    $('#C2').removeClass('wpawn');
-  }
-  if (arr[2][4] === 'P') {
-    $('#E6').addClass('bpawn');
-    $('#E7').removeClass('bpawn');
-  }
-  if (arr[5][6] === 'p') {
-    $('#G3').addClass('wpawn');
-    $('#G2').removeClass('wpawn');
-  }
-  if (arr[3][3] === 'P') {
-    $('#D5').addClass('bpawn');
-    $('#D7').removeClass('bpawn');
-  }
-  if (arr[6][6] === 'b') {
-    $('#G2').addClass('wbishop');
-    $('#F1').removeClass('wbishop');
-  }
-  if (arr[1][4] === 'B') {
-    $('#E7').addClass('bbishop');
-    $('#F8').removeClass('bbishop');
-  }
-  if (arr[5][5] === 'n') {
-    $('#F3').addClass('wknight');
-    $('#G1').removeClass('wknight');
-  }
-}
 
-function orig (arr){
-    // $('#D2').addClass('wpawn');
-    // $('#G8').addClass('bknight');
-    // $('#C2').addClass('wpawn');
-    // $('#E6').addClass('bpawn');
-    // $('#G2').addClass('wpawn');
-    // $('#D7').addClass('bpawn');
-    // $('#F1').addClass('wbishop');
-    // $('#F8').addClass('bbishop');
-    // $('#G1').addClass('wknight');
+// Because the game board only corresponds to the `tbody` element...
+var $chessboard = jQuery('.chessboard tbody');
+// I always start variable names with `$` when they reference `jQuery.Collection` values
+function transform () {
+// This looks strangely familiar... is that COPY-PASTA!?
+// TODO: Don't use COPY-PASTA!
+var gameboard = game.board;
 
-    $('#D4').removeClass('wpawn');
-    $('#D2').addClass('wpawn');
-    $('#F6').removeClass('bknight');
-    $('#G8').addClass('bknight');
-    $('#C4').removeClass('wpawn');
-    $('#C2').addClass('wpawn');
-    $('#E6').removeClass('bpawn');
-    $('#E7').addClass('bpawn');
-    $('#G3').removeClass('wpawn');
-    $('#G2').addClass('wpawn');
-    $('#D5').removeClass('bpawn');
-    $('#D7').addClass('bpawn');
-    $('#G2').removeClass('wbishop');
-    $('#F1').addClass('wbishop');
-    $('#E7').removeClass('bbishop');
-    $('#F8').addClass('bbishop');
-    $('#F3').removeClass('wknight');
-    $('#G1').addClass('wknight');
-}
 
-function last (arr){
-    $('#D4').addClass('wpawn');
-    $('#D2').removeClass('wpawn');
-    $('#F6').addClass('bknight');
-    $('#G8').removeClass('bknight');
-    $('#C4').addClass('wpawn');
-    $('#C2').removeClass('wpawn');
-    $('#E6').addClass('bpawn');
-    $('#E7').removeClass('bpawn');
-    $('#G3').addClass('wpawn');
-    $('#G2').removeClass('wpawn');
-    $('#D5').addClass('bpawn');
-    $('#D7').removeClass('bpawn');
-    $('#G2').addClass('wbishop');
-    $('#F1').removeClass('wbishop');
-    $('#E7').addClass('bbishop');
-    $('#F8').removeClass('bbishop');
-    $('#F3').addClass('wknight');
-    $('#G1').removeClass('wknight');
-}
+// [
+//   [ 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
+//   [ 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' ],
+//   Array(8).fill(null),
+//   Array(8).fill(null),
+//   Array(8).fill(null),
+//   Array(8).fill(null),
+//   [ 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' ],
+//   [ 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' ],
+// ];
+// You could also use nested `for` loops, but this is better...
 
-// Am I supposed to recognize this?
+jQuery(gameboard).each(function(rank, row){
+  jQuery(row).each(function(file, piece){
+    // http://stackoverflow.com/questions/1442925/how-to-get-nth-jquery-element
+    var $square = $chessboard
+      .find('tr').eq(rank) // Get the `tr` inside the `chessboard` for the `rank`
+      .find('td').eq(file) // Get the `td` inside the `tr` for the `file`
+
+    // console.log($square.get(), rank, file, piece);
+    // console.log(gameboard[rank][file]);
+    // Use the log, Luke!
+
+
+    // if (piece) $square.text(piece);
+
+
+
+    if (gameboard[rank][file] === 'R') {
+      $square.addClass('brook');
+    }
+    if (gameboard[rank][file] === 'r') {
+      $square.addClass('wrook');
+    }
+    if (gameboard[rank][file]=== 'P') {
+      $square.addClass('bpawn');
+    }
+    if (gameboard[rank][file] === 'N') {
+      $square.addClass('bknight');
+    }
+    if (gameboard[rank][file] === 'B') {
+      $square.addClass('bbishop');
+    }
+    if (gameboard[rank][file] === 'p') {
+      $square.addClass('wpawn');
+    }
+    if (gameboard[rank][file] === 'n') {
+      $square.addClass('wknight');
+    }
+    if (gameboard[rank][file] === 'b') {
+      $square.addClass('wbishop');
+    }
+    if (gameboard[rank][file] === 'k') {
+      $square.addClass('wking');
+    }
+    if (gameboard[rank][file] === 'K') {
+      $square.addClass('bking');
+    }
+    if (gameboard[rank][file] === 'Q') {
+      $square.addClass('bqueen');
+    }
+    if (gameboard[rank][file] === 'q') {
+      $square.addClass('wqueen');
+    }
+    if (gameboard[rank][file] === ' ') {
+      $square.removeClass();
+    }
+
+
+
+
+
+
+
+
+    // $square.text(piece); // Not _exactly_ what we discussed in class...
+    // TODO: Convert `square` to class name(s)
+    // TODO: Add class name(s) to `td` instead
+  });
+});
+
+};
+transform ();
+
+
+
+
+// Don't go breaking my IIFE...
 })(window || module && module.exports || this)
