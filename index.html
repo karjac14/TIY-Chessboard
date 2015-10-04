@@ -6,120 +6,155 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
-
+        <link href='https://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/styles.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="js/main.js"></script>
+        <!-- <script src="js/view-helpers.js"></script> -->
+
+
 
 
     </head>
     <body>
-        <div id="main">
-          <div class="board">
-            <div id= "title" class ="game-name"><h1>Chess Game</h1></div>
-            <div id= "empty" class ="side-label"></div>
-            <div id= "xA" class ="side-label"><p>A</p></div>
-            <div id= "xB" class ="side-label"><p>B</p></div>
-            <div id= "xC" class ="side-label"><p>C</p></div>
-            <div id= "xD" class ="side-label"><p>D</p></div>
-            <div id= "xE" class ="side-label"><p>E</p></div>
-            <div id= "xF" class ="side-label"><p>F</p></div>
-            <div id= "xG" class ="side-label"><p>G</p></div>
-            <div id= "xH" class ="side-label"><p>H</p></div>
-            <div id= "x1" class = "side-label"><p>8</p></div>
-            <div id= "A8" class = "block block-dark brook"><p>H1</p></div>
-            <div id= "B8" class = "block block-light bknight"><p>H2</p></div>
-            <div id= "C8" class = "block block-dark bbishop"><p>H3</p></div>
-            <div id= "D8" class = "block block-light bking"><p>H4</p></div>
-            <div id= "E8" class = "block block-dark bqueen" ><p>H5</p></div>
-            <div id= "F8" class = "block block-light bbishop"><p>H6</p></div>
-            <div id= "G8" class = "block block-dark bknight" ><p>H7</p></div>
-            <div id= "H8" class = "block block-light brook"><p>H8</p></div>
-            <div id= "x2" class = "side-label"><p>7</p></div>
-            <div id= "A7" class = "block block-light bpawn"><p>G1</p></div>
-            <div id= "B7" class = "block block-dark bpawn" ><p>G2</p></div>
-            <div id= "C7" class = "block block-light bpawn"><p>G3</p></div>
-            <div id= "D7" class = "block block-dark bpawn"><p>G4</p></div>
-            <div id= "E7" class = "block block-light bpawn"><p>G5</p></div>
-            <div id= "F7" class = "block block-dark bpawn"><p>G6</p></div>
-            <div id= "G7" class = "block block-light bpawn"><p>G7</p></div>
-            <div id= "H7" class = "block block-dark bpawn"><p>G8</p></div>
-            <div id= "x3" class = "side-label"><p>6</p></div>
-            <div id= "A6" class = "block block-dark"><p>F1</p></div>
-            <div id= "B6" class = "block block-light"><p>F2</p></div>
-            <div id= "C6" class = "block block-dark"><p>F3</p></div>
-            <div id= "D6" class = "block block-light"><p>F4</p></div>
-            <div id= "E6" class = "block block-dark"><p>F5</p></div>
-            <div id= "F6" class = "block block-light"><p>F6</p></div>
-            <div id= "G6" class = "block block-dark"><p>F7</p></div>
-            <div id= "H6" class = "block block-light"><p>F8</p></div>
-            <div id= "x4" class = "side-label"><p>5</p></div>
-            <div id= "A5" class = "block block-light"><p>E1</p></div>
-            <div id= "B5" class = "block block-dark"><p>E2</p></div>
-            <div id= "C5" class = "block block-light"><p>E3</p></div>
-            <div id= "D5" class = "block block-dark"><p>E4</p></div>
-            <div id= "E5" class = "block block-light"><p>E5</p></div>
-            <div id= "F5" class = "block block-dark"><p>E6</p></div>
-            <div id= "G5" class = "block block-light"><p>E7</p></div>
-            <div id= "H5" class = "block block-dark"><p>E8</p></div>
-            <div id= "x5" class = "side-label"><p>4</p></div>
-            <div id= "A4" class = "block block-dark"><p>D1</p></div>
-            <div id= "B4" class = "block block-light"><p>D2</p></div>
-            <div id= "C4" class = "block block-dark"><p>D3</p></div>
-            <div id= "D4" class = "block block-light"><p>D4</p></div>
-            <div id= "E4" class = "block block-dark"><p>D5</p></div>
-            <div id= "F4" class = "block block-light"><p>D6</p></div>
-            <div id= "G4" class = "block block-dark"><p>D7</p></div>
-            <div id= "H4" class = "block block-light"><p>D8</p></div>
-            <div id= "x6" class = "side-label"><p>3</p></div>
-            <div id= "A3" class = "block block-light"><p>C1</p></div>
-            <div id= "B3" class = "block block-dark"><p>C2</p></div>
-            <div id= "C3" class = "block block-light"><p>C3</p></div>
-            <div id= "D3" class = "block block-dark"><p>C4</p></div>
-            <div id= "E3" class = "block block-light"><p>C5</p></div>
-            <div id= "F3" class = "block block-dark"><p>C6</p></div>
-            <div id= "G3" class = "block block-light"><p>C7</p></div>
-            <div id= "H3" class = "block block-dark"><p>C8</p></div>
-            <div id= "x7" class = "side-label"><p>2</p></div>
-            <div id= "A2" class = "block block-dark wpawn"><p>A2</p></div>
-            <div id= "B2" class = "block block-light wpawn"><p>B2</p></div>
-            <div id= "C2" class = "block block-dark wpawn"><p>C2</p></div>
-            <div id= "D2" class = "block block-light wpawn"><p>D2</p></div>
-            <div id= "E2" class = "block block-dark wpawn"><p>E2</p></div>
-            <div id= "F2" class = "block block-light wpawn"><p>F2</p></div>
-            <div id= "G2" class = "block block-dark wpawn"><p>G2</p></div>
-            <div id= "H2" class = "block block-light wpawn"><p>H2</p></div>
-            <div id= "x8" class = "side-label"><p>1</p></div>
-            <div id= "A1" class = "block block-light wrook"><p>A1</p></div>
-            <div id= "B1" class = "block block-dark wknight"><p>A2</p></div>
-            <div id= "C1" class = "block block-light wbishop"><p>A3</p></div>
-            <div id= "D1" class = "block block-dark wking"><p>A4</p></div>
-            <div id= "E1" class = "block block-light wqueen"><p>A5</p></div>
-            <div id= "F1" class = "block block-dark wbishop"><p>A6</p></div>
-            <div id= "G1" class = "block block-light wknight"><p>A7</p></div>
-            <div id= "H1" class = "block block-dark wrook"><p>A8</p></div>
-          </div>
-          <div id="ch-control">
+        <div id="container">
+            <header>
+              <h1>Kasparov - Karpov</h1>
+              <h2>Catalan Opening - Moscow, 1984</h2>
+              <p>The match marked the first battle between two Soviet players for the world championship title since the 1969 Spassky-Petrosian title match. The games were played in the Hall of Columns, Trade Union House, Moscow.
+              </p>
+            </header>
+            <table class="chessboard">
+              <thead>
+              <tr>
+                <th></th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>E</th>
+                <th>F</th>
+                <th>G</th>
+                <th>H</th>
+                <th></th>
+              </tr>
+              <thead>
+              <tbody>
+              <tr>
+                <th><span>1</span></th>
+                <td></td> <!-- Rook -->
+                <td></td> <!-- Knight -->
+                <td></td> <!-- Bishop -->
+                <td></td> <!-- Queen -->
+                <td></td> <!-- King-->
+                <td></td> <!-- Bishop -->
+                <td></td> <!-- Knight -->
+                <td></td> <!-- Rook -->
+                <th><span>1</span></th>
+              </tr>
+              <tr>
+                <th><span>2</span></th>
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <th><span>2</span></th>
+              </tr>
+              <tr>
+                <th><span>3</span></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th><span>3</span></th>
+              </tr>
+              <tr>
+                <th><span>4</span></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th><span>4</span></th>
+              <tr>
+                <th><span>5</span></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th><span>5</span></th>
+              </tr>
+              <tr>
+                <th><span>6</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th><span>6</span></th>
+              </tr>
+              <tr>
+                <th><span>7</span></th>
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <td></td> <!-- Pawn -->
+                <th><span>7</span></th>
+              </tr>
+              <tr>
+                <th><span>8</span></th>
+                <td></td> <!-- Rook -->
+                <td></td> <!-- Knight -->
+                <td></td> <!-- Bishop -->
+                <td></td> <!-- Queen -->
+                <td></td> <!-- King-->
+                <td></td> <!-- Bishop -->
+                <td></td> <!-- Knight -->
+                <td></td> <!-- Rook -->
+                <th><span>8</span></th>
+              </tr>
+            </tbody>
+            </table>
+          <nav id="ch-control">
             <button id="rewind" type="button" class ="button" >Reset</button>
             <button id="back" type="button" class ="button" >Back</button>
+            <button id="play" type="button" class ="button" >Play</button>
             <button id="next" type="button" class ="button" >Next</button>
             <button id="forward" type="button" class ="button" >Fast-Forward</button>
-          </div>
+          </nav>
         </div>
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
-
         <script src="js/controller.js"></script>
-        <!-- <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/test.js"></script> -->
+
 
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -132,4 +167,86 @@
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
     </body>
+    <!-- <div id= "empty" class ="side-label"></div>
+    <div id= "xA" class ="side-label"><p>A</p></div>
+    <div id= "xB" class ="side-label"><p>B</p></div>
+    <div id= "xC" class ="side-label"><p>C</p></div>
+    <div id= "xD" class ="side-label"><p>D</p></div>
+    <div id= "xE" class ="side-label"><p>E</p></div>
+    <div id= "xF" class ="side-label"><p>F</p></div>
+    <div id= "xG" class ="side-label"><p>G</p></div>
+    <div id= "xH" class ="side-label"><p>H</p></div>
+    <div id= "x1" class = "side-label"><p>8</p></div>
+    <div id= "A8" class = "block block-dark brook"><p>H1</p></div>
+    <div id= "B8" class = "block block-light bknight"><p>H2</p></div>
+    <div id= "C8" class = "block block-dark bbishop"><p>H3</p></div>
+    <div id= "D8" class = "block block-light bking"><p>H4</p></div>
+    <div id= "E8" class = "block block-dark bqueen" ><p>H5</p></div>
+    <div id= "F8" class = "block block-light bbishop"><p>H6</p></div>
+    <div id= "G8" class = "block block-dark bknight" ><p>H7</p></div>
+    <div id= "H8" class = "block block-light brook"><p>H8</p></div>
+    <div id= "x2" class = "side-label"><p>7</p></div>
+    <div id= "A7" class = "block block-light bpawn"><p>G1</p></div>
+    <div id= "B7" class = "block block-dark bpawn" ><p>G2</p></div>
+    <div id= "C7" class = "block block-light bpawn"><p>G3</p></div>
+    <div id= "D7" class = "block block-dark bpawn"><p>G4</p></div>
+    <div id= "E7" class = "block block-light bpawn"><p>G5</p></div>
+    <div id= "F7" class = "block block-dark bpawn"><p>G6</p></div>
+    <div id= "G7" class = "block block-light bpawn"><p>G7</p></div>
+    <div id= "H7" class = "block block-dark bpawn"><p>G8</p></div>
+    <div id= "x3" class = "side-label"><p>6</p></div>
+    <div id= "A6" class = "block block-dark"><p>F1</p></div>
+    <div id= "B6" class = "block block-light"><p>F2</p></div>
+    <div id= "C6" class = "block block-dark"><p>F3</p></div>
+    <div id= "D6" class = "block block-light"><p>F4</p></div>
+    <div id= "E6" class = "block block-dark"><p>F5</p></div>
+    <div id= "F6" class = "block block-light"><p>F6</p></div>
+    <div id= "G6" class = "block block-dark"><p>F7</p></div>
+    <div id= "H6" class = "block block-light"><p>F8</p></div>
+    <div id= "x4" class = "side-label"><p>5</p></div>
+    <div id= "A5" class = "block block-light"><p>E1</p></div>
+    <div id= "B5" class = "block block-dark"><p>E2</p></div>
+    <div id= "C5" class = "block block-light"><p>E3</p></div>
+    <div id= "D5" class = "block block-dark"><p>E4</p></div>
+    <div id= "E5" class = "block block-light"><p>E5</p></div>
+    <div id= "F5" class = "block block-dark"><p>E6</p></div>
+    <div id= "G5" class = "block block-light"><p>E7</p></div>
+    <div id= "H5" class = "block block-dark"><p>E8</p></div>
+    <div id= "x5" class = "side-label"><p>4</p></div>
+    <div id= "A4" class = "block block-dark"><p>D1</p></div>
+    <div id= "B4" class = "block block-light"><p>D2</p></div>
+    <div id= "C4" class = "block block-dark"><p>D3</p></div>
+    <div id= "D4" class = "block block-light"><p>D4</p></div>
+    <div id= "E4" class = "block block-dark"><p>D5</p></div>
+    <div id= "F4" class = "block block-light"><p>D6</p></div>
+    <div id= "G4" class = "block block-dark"><p>D7</p></div>
+    <div id= "H4" class = "block block-light"><p>D8</p></div>
+    <div id= "x6" class = "side-label"><p>3</p></div>
+    <div id= "A3" class = "block block-light"><p>C1</p></div>
+    <div id= "B3" class = "block block-dark"><p>C2</p></div>
+    <div id= "C3" class = "block block-light"><p>C3</p></div>
+    <div id= "D3" class = "block block-dark"><p>C4</p></div>
+    <div id= "E3" class = "block block-light"><p>C5</p></div>
+    <div id= "F3" class = "block block-dark"><p>C6</p></div>
+    <div id= "G3" class = "block block-light"><p>C7</p></div>
+    <div id= "H3" class = "block block-dark"><p>C8</p></div>
+    <div id= "x7" class = "side-label"><p>2</p></div>
+    <div id= "A2" class = "block block-dark wpawn"><p>A2</p></div>
+    <div id= "B2" class = "block block-light wpawn"><p>B2</p></div>
+    <div id= "C2" class = "block block-dark wpawn"><p>C2</p></div>
+    <div id= "D2" class = "block block-light wpawn"><p>D2</p></div>
+    <div id= "E2" class = "block block-dark wpawn"><p>E2</p></div>
+    <div id= "F2" class = "block block-light wpawn"><p>F2</p></div>
+    <div id= "G2" class = "block block-dark wpawn"><p>G2</p></div>
+    <div id= "H2" class = "block block-light wpawn"><p>H2</p></div>
+    <div id= "x8" class = "side-label"><p>1</p></div>
+    <div id= "A1" class = "block block-light wrook"><p>A1</p></div>
+    <div id= "B1" class = "block block-dark wknight"><p>A2</p></div>
+    <div id= "C1" class = "block block-light wbishop"><p>A3</p></div>
+    <div id= "D1" class = "block block-dark wking"><p>A4</p></div>
+    <div id= "E1" class = "block block-light wqueen"><p>A5</p></div>
+    <div id= "F1" class = "block block-dark wbishop"><p>A6</p></div>
+    <div id= "G1" class = "block block-light wknight"><p>A7</p></div>
+    <div id= "H1" class = "block block-dark wrook"><p>A8 -->
+
 </html>

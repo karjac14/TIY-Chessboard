@@ -20,7 +20,6 @@
    * @var {Array} of...?
    */
   var moves = [
-    // {from: {rank: 4, file: 3}, to: {rank: 4, file: 3}}, // just a filler... no effect
     {from: {rank: 6, file: 3}, to: {rank: 4, file: 3}}, // first move from 6,3 to 4,3
     {from: {rank: 0, file: 6}, to: {rank: 2, file: 5}}, // second move
     {from: {rank: 6, file: 2}, to: {rank: 4, file: 2}}, // the rest of the move
@@ -30,19 +29,8 @@
     {from: {rank: 7, file: 5}, to: {rank: 6, file: 6}},
     {from: {rank: 0, file: 5}, to: {rank: 1, file: 4}},
     {from: {rank: 7, file: 6}, to: {rank: 5, file: 5}},
-  ];
+  ]; // END moves
 
-    // [4,3,6,3],  // [destination, destination, to, to]
-    // [2,5,0,6],  // [destination, destination, to, to]
-    // [4,2,6,2],  // [destination, destination, to, to]
-    // [2,4,1,4],  // [destination, destination, to, to]
-    // [5,6,6,6],  // [destination, destination, to, to]
-    // [3,3,1,3],  // [destination, destination, to, to]
-    // [6,6,7,5],  // [destination, destination, to, to]
-    // [1,4,0,5],  // [destination, destination, to, to]
-    // [5,5,7,6]   // [destination, destination, to, to]
-    // TODO: Fill me in!
- // END moves
 
   // var current; TODO: do we need this?
 
@@ -64,10 +52,10 @@
      * @return {Object} the game object for Method Chaining
      */
     reset: function(){
-      console.log ("mainjs reset!");
+      ctr = -1;
       board = initial();
-      console.log (board.join ('\n' + '|'));
-      return board;
+      // console.log (board.join ('\n' + '|'));
+      return this;
     },
     /**
      * Advance the internal game board to the next move.
@@ -76,20 +64,29 @@
      * @todo Make this work!
      */
     next: function(){
-      // Doesn't this seem to be missing something?
-      console.log ("mainjs next!");
       if (ctr < moves.length) {
       ctr += 1;
-      console.log (ctr);
       var curFromMove = moves[ctr].from;
       var curToMove = moves[ctr].to;
-      console.log (curFromMove);
-      console.log (curToMove);
       game.applyMove(curFromMove, curToMove);
-      return board;
-    }
-      // return this;
+      return this;
+      }
     },
+
+  //   play: function(){
+  //
+  //     while (ctr < moves.length) {
+  //       while (ctr < moves.length) {
+  //       ctr += 1;
+  //       var curFromMove = moves[ctr].from;
+  //       var curToMove = moves[ctr].to;
+  //       game.applyMove(curFromMove, curToMove);
+  //     }
+  //     var intervalID = window.setInterval(animate, 500);
+  //     return board;
+  //     }
+  //
+  // },
     /**
      * Advance the internal game board to the previous move.
      *
@@ -101,10 +98,8 @@
         var curFromMove = moves[ctr].to; //inversed `from and `to`
         var curToMove = moves[ctr].from; //inversed `from and `to`
         game.applyMove(curFromMove, curToMove);
-        console.log('main back');
         ctr -= 1;
-        console.log (ctr);
-        return board;
+        return this;
       }
     },
     /**
@@ -116,14 +111,11 @@
     end: function(){
       while (ctr < moves.length) {
       ctr += 1;
-      console.log (ctr);
       var curFromMove = moves[ctr].from;
       var curToMove = moves[ctr].to;
-      console.log (curFromMove);
-      console.log (curToMove);
       game.applyMove(curFromMove, curToMove);
     }
-    return board;
+    return this;
   },
     /**
      * Provide a printable representation of the game board for use as a tracer
@@ -155,22 +147,24 @@
      * @todo Fill me in! ...and remove this comment.
      */
     applyMove: function(from,to){
-        //board[x][y] = board [z][w];
+        //board[4][3] = board [6][3];
         board[to.rank][to.file] = board[from.rank][from.file];
         board[from.rank][from.file]= ' ';
+
         console.log (board.join ('\n' + '|'));
-        return board.join ('\n' + ' |');
+        game.board = board;
+        console.log (game.board);
     } // END applyMove
   }; // END game
 
-  /**
+  /**x
    * Provide the initial state of the game board, useful for any game.
    *
    * @return {Array} of {Array} of {String|null}
    */
   function initial(){
     return [
-      [ '|R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
+      [ 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
       [ 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' ],
       [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
       [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],

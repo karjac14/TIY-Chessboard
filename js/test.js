@@ -16,25 +16,28 @@ var cb = game.board();
 it("have elements in the array", function () {
   chai.expect(cb).to.be.an('array');
   chai.expect(cb[0][1]).to.be.deep.equal('N');
-})
+});
 
 it("have applymove function", function () {
-  chai.expect(applyMove).to.be.a('function');
-  chai.expect(applyMOve).
 
-})
+  chai.expect(game.applyMove).to.be.a('function');
+  // chai.expect(game.applyMove).to.equal('array');
 
-it("have applymove function", function () {
-  chai.expect(applyMove).to.be.a('function');
+});
 
+it("applymove should be able to move pieces", function () {
+  //pre-condition
+  game.reset();
+  var boardCopy = game.board();
+  console.log(boardCopy);
+  chai.expect(boardCopy[6][3])to.equal('p');
+  chai.expect(boardCopy[4][3])to.equal(' ');
 
-})
-
-
-
-
-
-
+  chai.expect(applyMove(
+    { rank: 6, file: 3},
+    { rank: 4, file: 3}
+  )).to.be.a('array');
+});
 
 
 
