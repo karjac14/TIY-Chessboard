@@ -45,7 +45,7 @@
       return board.map(function(row){
         return row.slice();
       });
-    }(),
+    }(), // edit1
     /**
      * Reset the internal game board to it's initial state.
      *
@@ -53,7 +53,7 @@
      */
     reset: function(){
       ctr = -1;
-      board = initial();
+      this.board = initial(); //edit2
       // console.log (board.join ('\n' + '|'));
       return this;
     },
@@ -75,20 +75,19 @@
       }
     },
 
-  //   play: function(){
-  //
-  //     while (ctr < moves.length) {
-  //       while (ctr < moves.length) {
-  //       ctr += 1;
-  //       var curFromMove = moves[ctr].from;
-  //       var curToMove = moves[ctr].to;
-  //       game.applyMove(curFromMove, curToMove);
-  //     }
-  //     var intervalID = window.setInterval(animate, 500);
-  //     return board;
-  //     }
-  //
-  // },
+    play: function(){
+
+      function autoplay (){
+        if (ctr < moves.length-1) {
+        ctr += 1;
+        var curFromMove = moves[ctr].from;
+        var curToMove = moves[ctr].to;
+        game.applyMove(curFromMove, curToMove);
+        }
+      }
+      var intervalID = window.setInterval(autoplay(), 10);
+
+  },
     /**
      * Advance the internal game board to the previous move.
      *
@@ -111,7 +110,7 @@
      * @todo Make this work!
      */
     end: function(){
-      while (ctr < moves.length) {
+      while (ctr < moves.length-1) {
       ctr += 1;
       var curFromMove = moves[ctr].from;
       var curToMove = moves[ctr].to;
@@ -150,11 +149,11 @@
      */
     applyMove: function(from,to){
         //board[4][3] = board [6][3];
-        board[to.rank][to.file] = board[from.rank][from.file];
-        board[from.rank][from.file]= ' ';
+        game.board[to.rank][to.file] = game.board[from.rank][from.file];
+        game.board[from.rank][from.file]= ' ';
 
         console.log (board.join ('\n' + '|'));
-        game.board = board;
+        // game.board = board;
         console.log (game.board.join ('\n' + '|'));
     } // END applyMove
   }; // END game
