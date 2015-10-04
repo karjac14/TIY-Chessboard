@@ -13,7 +13,8 @@
   // Controller for "reset move"...
   jQuery('#play').on('click', function(){
     console.log('play clicked');
-    game.play();
+    setInterval(game.next, 1000);
+    transform ();
   });
 
 
