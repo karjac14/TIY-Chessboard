@@ -45,7 +45,7 @@
       return board.map(function(row){
         return row.slice();
       });
-    },
+    }(),
     /**
      * Reset the internal game board to it's initial state.
      *
@@ -64,11 +64,13 @@
      * @todo Make this work!
      */
     next: function(){
-      if (ctr < moves.length) {
+      if (ctr < moves.length-1) {
       ctr += 1;
       var curFromMove = moves[ctr].from;
       var curToMove = moves[ctr].to;
       game.applyMove(curFromMove, curToMove);
+      console.log(board);
+      console.log(game.board);
       return this;
       }
     },
@@ -153,7 +155,7 @@
 
         console.log (board.join ('\n' + '|'));
         game.board = board;
-        console.log (game.board);
+        console.log (game.board.join ('\n' + '|'));
     } // END applyMove
   }; // END game
 

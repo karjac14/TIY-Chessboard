@@ -12,7 +12,7 @@
 
   // Controller for "reset move"...
   jQuery('#play').on('click', function(){
-    console.log('rewind clicked');
+    console.log('play clicked');
     game.play();
   });
 
@@ -20,15 +20,15 @@
 
   jQuery('#rewind').on('click', function(){
     console.log('rewind clicked');
-    var arr1 = game.reset();
-
+    game.reset();
+    transform ();
   });
 
   // Controller for "fast forward move"...
   jQuery('#forward').on('click', function(event){
     console.log('forward clicked');
-    var arr1 = game.end();
-    console.log (arr1);
+    game.end();
+    transform ();
   });
 
 // Controller for "next move"...
@@ -40,7 +40,8 @@
 
 // Controller for "back move"...
   jQuery('#back').on('click', function(event){
-    var arr1 = game.prev();
+    game.prev();
+    transform ();
   });
 
 
@@ -51,7 +52,7 @@
 // Because the game board only corresponds to the `tbody` element...
 var $chessboard = jQuery('.chessboard tbody');
 // I always start variable names with `$` when they reference `jQuery.Collection` values
-
+function transform () {
 // This looks strangely familiar... is that COPY-PASTA!?
 // TODO: Don't use COPY-PASTA!
 var gameboard = game.board;
@@ -68,7 +69,6 @@ var gameboard = game.board;
 //   [ 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' ],
 // ];
 // You could also use nested `for` loops, but this is better...
-function transform () {
 
 jQuery(gameboard).each(function(rank, row){
   jQuery(row).each(function(file, piece){
@@ -77,8 +77,8 @@ jQuery(gameboard).each(function(rank, row){
       .find('tr').eq(rank) // Get the `tr` inside the `chessboard` for the `rank`
       .find('td').eq(file) // Get the `td` inside the `tr` for the `file`
 
-    console.log($square.get(), rank, file, piece, gameboard, gameboard[rank][file]);
-    console.log(gameboard);
+    console.log($square.get(), rank, file, piece);
+    console.log(gameboard[rank][file]);
     // Use the log, Luke!
 
 
@@ -88,7 +88,7 @@ jQuery(gameboard).each(function(rank, row){
 
     if (gameboard[rank][file] === 'R') {
       $square.addClass('brook');
-     }
+    }
     if (gameboard[rank][file]=== 'P') {
       $square.addClass('bpawn');
     }
@@ -121,14 +121,11 @@ jQuery(gameboard).each(function(rank, row){
   });
 });
 
+};
+transform ();
+
+
+
+
 // Don't go breaking my IIFE...
-
-
-}
-
-
-
-
-
-
 })(window || module && module.exports || this)
