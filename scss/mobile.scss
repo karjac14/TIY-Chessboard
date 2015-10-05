@@ -1,3 +1,7 @@
+
+@media (min-width: 319px) and (max-width: 598px){
+
+
 *, *::after *::before {
   box-sizing: border-box;
 }
@@ -8,10 +12,10 @@ body {
 }
 
 #container {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3%;
+  margin-top: 20px;
   vertical-align: middle;
   hr{
     padding: 0;
@@ -19,7 +23,7 @@ body {
     border-top: medium double #924639;
     color: #924639;
     text-align: center;
-    margin-top: 1%;
+    margin-top: 3%;
     margin-bottom: 1%;
     margin-left: auto;
     margin-right: auto;
@@ -35,9 +39,9 @@ body {
     }
   }
   header {
-    display: inline-block;
-    width: 44%;
-    margin: auto 0;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
     text-align: center;
     vertical-align: middle;
     h1 {
@@ -52,6 +56,7 @@ body {
       color: #313131;
     }
     p {
+      display: none;
       margin: 0 auto;
       width: 80%;
       font-size: 0.7em;
@@ -77,8 +82,8 @@ body {
     }
   }
   section {
-    display: inline-block;
-    width: 55%;
+    display: block;
+    width: 95%;
     margin-top: 1%;
     margin-bottom: auto;
     margin-left: auto;
@@ -162,7 +167,7 @@ body {
 
 .brook:before {
     content: "\265C";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -173,7 +178,7 @@ body {
 
 .bknight:before {
     content: "\265E";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -184,7 +189,7 @@ body {
 
 .bbishop:before {
     content: "\265D";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -194,7 +199,7 @@ body {
 }
 .bqueen:before {
     content: "\265A";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -204,7 +209,7 @@ body {
 }
 .bking:before {
     content: "\265B";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -215,7 +220,7 @@ body {
 
 .bpawn:before {
     content: "\265F";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -226,7 +231,7 @@ body {
 
 .wrook:before {
     content: "\2656";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -237,7 +242,7 @@ body {
 
 .wbishop:before {
     content: "\2657";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -248,7 +253,7 @@ body {
 
 .wknight:before {
     content: "\2658";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -259,7 +264,7 @@ body {
 
 .wking:before {
     content: "\2655";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -269,7 +274,7 @@ body {
 }
 .wqueen:before {
     content: "\2654";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
@@ -279,11 +284,13 @@ body {
 }
 .wpawn:before {
     content: "\2659";
-    font-size: 3.2vw;
+    font-size: 5.5vw;
     display: block;
     position:absolute;
     top:4%;
     bottom:5%;
     left:0;
     right:0;
+}
+
 }

@@ -39,9 +39,9 @@ body {
     vertical-align: middle; }
     #container header h1 {
       text-align: center;
-      font-size: 2.1em;
+      font-size: 2.0em;
       color: #924639;
-      margin: 1.5em 1.2em auto; }
+      margin: 1.2em 1.2em auto; }
     #container header h2 {
       text-align: center;
       font-size: 1em;
@@ -60,6 +60,10 @@ body {
       text-align: center;
       width: 99%;
       margin: 5% auto; }
+      #container header nav p {
+        border: none;
+        font-size: 0.8em;
+        font-weight: 100; }
       #container header nav button {
         margin: 2px auto; }
   #container section {

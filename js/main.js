@@ -69,25 +69,29 @@
       var curFromMove = moves[ctr].from;
       var curToMove = moves[ctr].to;
       game.applyMove(curFromMove, curToMove);
-      console.log(board);
+      console.log(globals.ctr);
       console.log(game.board);
       return this;
       }
     },
 
-    play: function(){
-
-      function autoplay (){
-        if (ctr < moves.length-1) {
-        ctr += 1;
-        var curFromMove = moves[ctr].from;
-        var curToMove = moves[ctr].to;
-        game.applyMove(curFromMove, curToMove);
-        }
-      }
-      var intervalID = window.setInterval(autoplay(), 10);
-
-  },
+  //   play: function() {
+  //
+  //       setInterval(function(){
+  //       if (ctr < moves.length-1) {
+  //       ctr += 1;
+  //       var curFromMove = moves[ctr].from;
+  //       var curToMove = moves[ctr].to;
+  //       game.applyMove(curFromMove, curToMove);
+  //       return this;
+  //       }
+  //     }, 1000);
+  //
+  //     // setInterval(autoplay(), 10);
+  //     // if (ctr < moves.length-1) {
+  //     //   clearInterval(nIntervId);
+  //     // }
+  // },
     /**
      * Advance the internal game board to the previous move.
      *
@@ -149,13 +153,17 @@
      */
     applyMove: function(from,to){
         //board[4][3] = board [6][3];
-        game.board[to.rank][to.file] = game.board[from.rank][from.file];
-        game.board[from.rank][from.file]= ' ';
+        board[to.rank][to.file] = board[from.rank][from.file];
+        board[from.rank][from.file]= ' ';
 
         console.log (board.join ('\n' + '|'));
-        // game.board = board;
+        game.board = board;
         console.log (game.board.join ('\n' + '|'));
-    } // END applyMove
+    }, // END applyMove
+
+    counter: function (){
+        return ctr;
+    }
   }; // END game
 
   /**x
