@@ -8,18 +8,42 @@
    * 4. What should my `CALLBACK` do with it's `EVENT`...?
    */
 
-var autoplay = 0;
-
+   var playNow = 0;
+   var ctr = game.counter();
   // Controller for "auto play"...
   jQuery('#play').on('click', function (){
     jQuery('#play').addClass('playing');
-    console.log(ctr);
-    autoplay = setInterval(game.next, 1000);
-    jQuery('.playing').on('click', function(){
-      jQuery('.playing').removeClass('playing');
-      clearInterval(autoplay);
-    });
+    autoplay();
   });
+
+
+  jQuery('.playing').on('click', function(){
+    pause();
+    jQuery('.playing').removeClass('playing');
+  });
+
+
+  function autoplay (){
+  console.log ("ap1 reached");
+  playNow = setInterval(autoPlayTwo, 1000);
+  }
+
+  function autoPlayTwo () {
+    console.log("reached ap2");
+    if (ctr < 8) {
+      ctr = game.counter();
+      game.next();
+      transform ();
+      console.log(ctr);
+    } else {
+      return;
+    }
+    return;
+  }
+
+  function pause (){
+    clearInterval(playNow);
+  }
 
 
 
