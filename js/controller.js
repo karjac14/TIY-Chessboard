@@ -8,13 +8,17 @@
    * 4. What should my `CALLBACK` do with it's `EVENT`...?
    */
 
+var autoplay = 0;
 
-
-  // Controller for "reset move"...
-  jQuery('#play').on('click', function(){
-    console.log('play clicked');
-    setInterval(game.next, 1000);
-    transform ();
+  // Controller for "auto play"...
+  jQuery('#play').on('click', function (){
+    jQuery('#play').addClass('playing');
+    console.log(ctr);
+    autoplay = setInterval(game.next, 1000);
+    jQuery('.playing').on('click', function(){
+      jQuery('.playing').removeClass('playing');
+      clearInterval(autoplay);
+    });
   });
 
 
