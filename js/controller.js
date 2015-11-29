@@ -52,14 +52,16 @@
   jQuery('#rewind').on('click', function(){
     console.log('rewind clicked');
     game.reset();
-    transform ();
+    regen.transform ();
+
   });
 
   // Controller for "fast forward move"...
   jQuery('#forward').on('click', function(event){
     console.log('forward clicked');
     game.end();
-    transform ();
+    regen.transform ();
+
   });
 
 // Controller for "next move"...
@@ -72,7 +74,8 @@
 // Controller for "back move"...
   jQuery('#back').on('click', function(event){
     game.prev();
-    transform ();
+    regen.transform ();
+
   });
 
 

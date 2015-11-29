@@ -13,17 +13,6 @@ transform: function () {
 var gameboard = game.board;
 
 
-// [
-//   [ 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' ],
-//   [ 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P' ],
-//   Array(8).fill(null),
-//   Array(8).fill(null),
-//   Array(8).fill(null),
-//   Array(8).fill(null),
-//   [ 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' ],
-//   [ 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r' ],
-// ];
-// You could also use nested `for` loops, but this is better...
 
 jQuery(gameboard).each(function(rank, row){
   jQuery(row).each(function(file, piece){
